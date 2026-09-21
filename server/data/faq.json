@@ -1,0 +1,231 @@
+{
+  "botId": "cusco",
+  "paivitetty": "2026-09-21",
+  "rivit": [
+    {
+      "id": 1,
+      "kategoria": "Aikataulu",
+      "kysymys": "Kuinka kauan verkkosivuprojekti kestää?",
+      "vastaus": "Tyypillinen sivustoprojekti kestää 2–4 viikkoa briefistä julkaisuun. Laajemmat, monisivuiset kokonaisuudet vievät 4–8 viikkoa. Tarkka aikataulu sovitaan strategiavaiheessa.",
+      "avainsanat": [
+        "aikataulu",
+        "kesto",
+        "projektin pituus",
+        "toimitusaika",
+        "viikkoa"
+      ],
+      "lahdeUrl": "https://cusco.fi/"
+    },
+    {
+      "id": 2,
+      "kategoria": "Hinnoittelu",
+      "kysymys": "Mitä verkkosivuprojekti maksaa?",
+      "vastaus": "Projektin hinta määräytyy laajuuden ja tarpeiden mukaan. Tarkka hinta-arvio annetaan strategiavaiheessa – pyydä tarjous osoitteesta studio@cusco.fi tai yhteydenottolomakkeella.",
+      "avainsanat": [
+        "hinta",
+        "hinnoittelu",
+        "kustannus",
+        "tarjous",
+        "budjetti",
+        "maksaa"
+      ],
+      "lahdeUrl": "https://cusco.fi/yhteystiedot"
+    },
+    {
+      "id": 3,
+      "kategoria": "Palvelut",
+      "kysymys": "Mitä palveluita Cusco tarjoaa?",
+      "vastaus": "Cusco tarjoaa kuusi palvelualuetta: 1) Design (brändi, UI, art direction), 2) Kuvitus & sisältö, 3) Kehitys & teknologia, 4) Ylläpito, 5) Analytiikka, 6) Automaatiot. Suunnittelu ja kehitys saadaan saman katon alta.",
+      "avainsanat": [
+        "palvelut",
+        "mitä teette",
+        "design",
+        "kehitys",
+        "ylläpito",
+        "analytiikka",
+        "automaatiot"
+      ],
+      "lahdeUrl": "https://cusco.fi/palvelut"
+    },
+    {
+      "id": 4,
+      "kategoria": "Teknologia",
+      "kysymys": "Millä teknologialla sivustot rakennetaan?",
+      "vastaus": "Sivustot rakennetaan modernilla Next.js- ja React-teknologialla. Sisällönhallintaan käytetään Sanity-CMS:ää, hostaukseen Vercel-alustaa ja analytiikkaan yksityisyyttä kunnioittavaa Matomoa.",
+      "avainsanat": [
+        "teknologia",
+        "next.js",
+        "react",
+        "sanity",
+        "vercel",
+        "matomo",
+        "tech stack"
+      ],
+      "lahdeUrl": "https://cusco.fi/palvelut"
+    },
+    {
+      "id": 5,
+      "kategoria": "Sisällönhallinta",
+      "kysymys": "Voinko päivittää sivuston sisältöä itse?",
+      "vastaus": "Kyllä. Saat helppokäyttöisen Sanity-sisällönhallinnan, jolla päivität tekstit ja kuvat itse ilman koodaamista. Käytön opastus sisältyy aina toimitukseen.",
+      "avainsanat": [
+        "sisällönhallinta",
+        "päivittää itse",
+        "cms",
+        "sanity",
+        "muokata",
+        "editointi"
+      ],
+      "lahdeUrl": "https://cusco.fi/palvelut"
+    },
+    {
+      "id": 6,
+      "kategoria": "Kieliversiot",
+      "kysymys": "Teettekö monikielisiä sivustoja?",
+      "vastaus": "Kyllä. Sivustot toteutetaan teknisesti valmiiksi monikielisiksi, mikä mahdollistaa vaivattoman laajentumisen uusille markkinoille ja kieliversioiden lisäämisen.",
+      "avainsanat": [
+        "monikielinen",
+        "kieliversiot",
+        "käännökset",
+        "englanti",
+        "kansainvälinen"
+      ],
+      "lahdeUrl": "https://cusco.fi/palvelut"
+    },
+    {
+      "id": 7,
+      "kategoria": "Ylläpito",
+      "kysymys": "Mitä ylläpito sisältää ja mitä se maksaa?",
+      "vastaus": "Ylläpito alkaen 199 €/kk sisältää palvelinkulut, tietoturvan, ohjelmistopäivitykset, teknisen ylläpidon, kuukausittaisen analytiikkaraportin sekä yhteydenottolomakkeen (2 000 viestiä/kk automaattivastauksineen ja roskapostisuodatuksineen).",
+      "avainsanat": [
+        "ylläpito",
+        "hosting",
+        "hinta 199",
+        "tietoturva",
+        "päivitykset",
+        "tuki",
+        "kuukausimaksu"
+      ],
+      "lahdeUrl": "https://cusco.fi/palvelut"
+    },
+    {
+      "id": 8,
+      "kategoria": "SEO",
+      "kysymys": "Optimoitteko sivut hakukoneille (SEO)?",
+      "vastaus": "Kyllä. Tekninen hakukoneoptimointi huomioidaan osana kehitystä, jotta sivustolla on parhaat edellytykset näkyä hakukoneissa alusta alkaen.",
+      "avainsanat": [
+        "seo",
+        "hakukoneoptimointi",
+        "google",
+        "näkyvyys",
+        "hakukoneet"
+      ],
+      "lahdeUrl": "https://cusco.fi/palvelut"
+    },
+    {
+      "id": 9,
+      "kategoria": "Responsiivisuus",
+      "kysymys": "Ovatko sivut mobiiliystävällisiä?",
+      "vastaus": "Kyllä. Responsiivinen toteutus takaa erinomaisen käyttökokemuksen puhelimella, tabletilla ja tietokoneella.",
+      "avainsanat": [
+        "responsiivinen",
+        "mobiili",
+        "puhelin",
+        "tabletti",
+        "mobiiliystävällinen"
+      ],
+      "lahdeUrl": "https://cusco.fi/palvelut"
+    },
+    {
+      "id": 10,
+      "kategoria": "Prosessi",
+      "kysymys": "Miten projekti etenee?",
+      "vastaus": "Prosessi etenee kuudessa vaiheessa: 1) Brief (tavoitteet ja budjetti), 2) Strategia (rakenne ja sivukartta), 3) Suunnittelu (visuaalinen suunnittelu ja prototyyppi), 4) Kehitys (Next.js + CMS), 5) Julkaisu (performance ja SEO), 6) Ylläpito.",
+      "avainsanat": [
+        "prosessi",
+        "vaiheet",
+        "miten etenee",
+        "brief",
+        "strategia",
+        "suunnittelu",
+        "julkaisu"
+      ],
+      "lahdeUrl": "https://cusco.fi/palvelut"
+    },
+    {
+      "id": 11,
+      "kategoria": "Automaatiot",
+      "kysymys": "Rakennatteko chatbotteja ja automaatioita?",
+      "vastaus": "Kyllä. Toteutamme tekoälypohjaisia chatbotteja, CRM- ja sähköposti-integraatioita, liidien käsittelyn automaatioita sekä ajanvaraus- ja kalenteriautomaatioita, jotka säästävät aikaa ja vähentävät virheitä.",
+      "avainsanat": [
+        "chatbot",
+        "automaatio",
+        "tekoäly",
+        "crm",
+        "integraatio",
+        "liidit",
+        "ajanvaraus"
+      ],
+      "lahdeUrl": "https://cusco.fi/palvelut"
+    },
+    {
+      "id": 12,
+      "kategoria": "Analytiikka",
+      "kysymys": "Saanko analytiikkaa ja raportteja?",
+      "vastaus": "Kyllä. Seuraamme kävijöiden käyttäytymistä ja toimitamme selkeät kuukausiraportit tärkeimmistä tunnusluvuista. Teemme myös A/B-testausta ja muutamme datan konkreettisiksi parannuksiksi.",
+      "avainsanat": [
+        "analytiikka",
+        "raportit",
+        "kävijäseuranta",
+        "mittarit",
+        "ab-testaus",
+        "konversio"
+      ],
+      "lahdeUrl": "https://cusco.fi/palvelut"
+    },
+    {
+      "id": 13,
+      "kategoria": "Kohderyhmä",
+      "kysymys": "Millaisille asiakkaille palvelu sopii?",
+      "vastaus": "Palvelu sopii yrityksille, jotka haluavat nopeat, hakukoneystävälliset ja brändinsä näköiset verkkosivut, jotka tuottavat tuloksia myynnissä. Suunnittelu tehdään aina kohderyhmä ja liiketoiminnan tavoitteet edellä.",
+      "avainsanat": [
+        "asiakkaat",
+        "kenelle",
+        "sopivuus",
+        "yritykset",
+        "kohderyhmä",
+        "b2b"
+      ],
+      "lahdeUrl": "https://cusco.fi/"
+    },
+    {
+      "id": 14,
+      "kategoria": "Palvelun laajuus",
+      "kysymys": "Teettekö vain suunnittelua vai myös kehityksen?",
+      "vastaus": "Molempia. Cusco on design- ja kehitysstudio, joka hoitaa sekä visuaalisen suunnittelun että teknisen toteutuksen saman katon alta – briefistä valmiiseen, ylläpidettyyn sivustoon asti.",
+      "avainsanat": [
+        "suunnittelu",
+        "kehitys",
+        "design",
+        "development",
+        "kokonaispalvelu",
+        "molemmat"
+      ],
+      "lahdeUrl": "https://cusco.fi/"
+    },
+    {
+      "id": 15,
+      "kategoria": "Yhteydenotto",
+      "kysymys": "Miten otan yhteyttä tai aloitan projektin?",
+      "vastaus": "Voit ottaa yhteyttä sähköpostitse osoitteeseen studio@cusco.fi tai yhteydenottolomakkeella osoitteessa cusco.fi/yhteystiedot. Studio sijaitsee Helsingissä.",
+      "avainsanat": [
+        "yhteystiedot",
+        "ota yhteyttä",
+        "aloita projekti",
+        "sähköposti",
+        "helsinki"
+      ],
+      "lahdeUrl": "https://cusco.fi/yhteystiedot"
+    }
+  ]
+}
