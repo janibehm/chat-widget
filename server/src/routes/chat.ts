@@ -5,9 +5,10 @@ import { z } from 'zod';
 import { getModel } from '../llm/client.js';
 import { systemPromptFor } from '../llm/prompt.js';
 import { notifyN8n } from '../n8n/notify.js';
+import { isValidBotId, UnknownBotError } from '../llm/faq.js';
 
 const bodySchema = z.object({
-  botId: z.string().min(1),
+  botId: z.string().min(1).refine(isValidBotId, 'Virheellinen botId'),
   sessionId: z.string().optional(),
   messages: z
     .array(
@@ -65,8 +66,15 @@ chatRoute.post('/chat', async (c) => {
       // vastauksessa tai käyttäjän viestissä) -> notifyN8n('lead.captured', ...)
       void full;
     } catch (err) {
+      // Tuntematon botti on konfiguraatiovirhe, ei palvelinvirhe - erotellaan
+      // se lokissa, jotta oikeat häiriöt eivät huku väärin asennettuihin
+      // script-tageihin.
       const message = err instanceof Error ? err.message : 'Tuntematon virhe';
-      console.error('[chat] striimaus epäonnistui:', message);
+      if (err instanceof UnknownBotError) {
+        console.warn('[chat]', message);
+      } else {
+        console.error('[chat] striimaus epäonnistui:', message);
+      }
       await stream.writeSSE({ data: JSON.stringify({ type: 'error', message }) });
     }
   });

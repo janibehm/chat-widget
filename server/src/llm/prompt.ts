@@ -1,25 +1,27 @@
-import { loadFaq, faqAsText } from './faq.js';
+import { loadBot, faqAsText } from './faq.js';
 
 /**
  * ===========================================================================
  * SYSTEM PROMPT - tätä muokataan todennäköisimmin.
  * ===========================================================================
- * Botin aihepiiri määräytyy UKK-aineistosta (server/data/faq.json), ei tästä
- * tiedostosta. Aineisto ON rajaus: jos vastausta ei ole siellä, botti ohjaa
- * ihmiselle. Uusi aihe otetaan käyttöön lisäämällä rivi aineistoon.
+ * Tämä tiedosto on botista riippumaton. Botin nimi, kuvaus, fallback-viesti
+ * ja koko aiherajaus tulevat data/<botId>.json-tiedostosta.
+ *
+ * Uusi asiakas otetaan käyttöön lisäämällä data/<botId>.json - koodiin ei
+ * kosketa lainkaan.
  */
 export function systemPromptFor(botId: string): string {
-  const doc = loadFaq();
+  const bot = loadBot(botId);
 
-  return `Olet Cuscon verkkosivuston asiakaspalveluassistentti. Cusco on
-helsinkiläinen design- ja kehitysstudio, joka tekee verkkosivustoja.
+  return `Olet ${bot.nimi}n verkkosivuston asiakaspalveluassistentti.
+${bot.nimi} on ${bot.kuvaus}.
 
 TÄRKEIN SÄÄNTÖ
 Vastaa AINOASTAAN alla olevan UKK-aineiston perusteella. Aineisto on ainoa
 tietolähteesi.
 
 Jos kysymykseen ei löydy vastausta aineistosta, vastaa täsmälleen näin:
-"En löytänyt tähän vastausta. Studiomme auttaa mielellään: studio@cusco.fi"
+"${bot.fallbackViesti}"
 
 Älä koskaan keksi hintoja, aikatauluja, teknisiä yksityiskohtia tai
 palveluita joita aineistossa ei mainita. Jos et ole varma, ohjaa ihmiselle.
@@ -33,9 +35,7 @@ VASTAUSTYYLI
 - Voit yhdistää tietoa useammalta riviltä jos kysymys koskee useaa asiaa
 - Kun vastaus perustuu tiettyyn riviin, voit mainita lähdelinkin lopussa
 
-UKK-AINEISTO (${doc.rivit.length} riviä, päivitetty ${doc.paivitetty}):
+UKK-AINEISTO (${bot.rivit.length} riviä, päivitetty ${bot.paivitetty}):
 
-${faqAsText(doc)}
-
-Botin tunniste: ${botId}.`;
+${faqAsText(bot)}`;
 }

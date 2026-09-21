@@ -109,9 +109,48 @@ server/src/
   config.ts         Ympäristömuuttujien luku ja validointi
   routes/chat.ts    POST /chat, SSE-striimaus
   llm/client.ts     Tarjoajan vaihto (anthropic | openai)
-  llm/prompt.ts     SYSTEM PROMPT - muokkaa tästä
+  llm/faq.ts        Bottikohtaisen aineiston lataus + välimuisti
+  llm/prompt.ts     SYSTEM PROMPT - botista riippumaton
   n8n/notify.ts     notifyN8n(event, payload)
+
+server/data/
+  <botId>.json      Yksi tiedosto per botti - aineisto JA aiherajaus
 ```
+
+## Uuden botin lisääminen
+
+Luo `server/data/<botId>.json`. **Koodiin ei kosketa.**
+
+```json
+{
+  "botId": "asiakas2",
+  "nimi": "Kahvila Aurora",
+  "kuvaus": "tamperelainen kahvila ja leipomo",
+  "fallbackViesti": "En osaa vastata tuohon. Soita meille: 040 123 4567",
+  "paivitetty": "2026-09-21",
+  "rivit": [
+    {
+      "id": 1,
+      "kategoria": "Aukioloajat",
+      "kysymys": "Milloin olette auki?",
+      "vastaus": "Olemme auki ma-pe 8-18, la 9-16 ja su suljettu.",
+      "avainsanat": ["aukiolo", "auki", "sunnuntai"],
+      "lahdeUrl": "https://esimerkki.fi/aukioloajat"
+    }
+  ]
+}
+```
+
+Sitten `data-bot-id="asiakas2"` script-tagiin. `GET /health` listaa käytössä
+olevat botit.
+
+Aineisto on samalla botin **aiherajaus**: botti vastaa vain siihen mitä
+riveissä on, muuhun se vastaa `fallbackViesti`-tekstillä. Uusi aihe otetaan
+käyttöön lisäämällä rivi, ei promptia muokkaamalla.
+
+Tiedosto luetaan levyltä ajonaikana ja välimuistitetaan mtime-leimalla, joten
+ylikirjoitus (esim. n8n-synkronointi Sheetsista) näkyy ilman palvelimen
+uudelleenkäynnistystä.
 
 ## Mitä todennäköisimmin muokkaat
 

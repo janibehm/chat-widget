@@ -4,6 +4,7 @@ import { cors } from 'hono/cors';
 import { config } from './config.js';
 import { describeModel } from './llm/client.js';
 import { chatRoute } from './routes/chat.js';
+import { listBots } from './llm/faq.js';
 
 const app = new Hono();
 
@@ -25,7 +26,7 @@ app.use(
   }),
 );
 
-app.get('/health', (c) => c.json({ ok: true, model: describeModel() }));
+app.get('/health', (c) => c.json({ ok: true, model: describeModel(), bots: listBots() }));
 
 app.route('/', chatRoute);
 
@@ -34,4 +35,5 @@ serve({ fetch: app.fetch, port: config.port }, (info) => {
   console.log(`  malli  : ${describeModel()}`);
   console.log(`  CORS   : ${config.allowedOrigins === '*' ? '* (kaikki)' : config.allowedOrigins.join(', ')}`);
   console.log(`  n8n    : ${config.n8nWebhookUrl ? 'käytössä' : 'ei konfiguroitu'}`);
+  console.log(`  botit  : ${listBots().join(', ') || '(ei yhtään data-hakemistossa)'}`);
 });
