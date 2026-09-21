@@ -1,0 +1,16 @@
+{
+  "name": "chat-widget",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Embeddable chat widget (Preact + Shadow DOM) with a Hono/AI SDK backend",
+  "scripts": {
+    "dev": "pnpm --parallel --filter \"./*\" dev",
+    "dev:widget": "pnpm --filter widget dev",
+    "dev:server": "pnpm --filter server dev",
+    "build": "pnpm --filter widget build && pnpm --filter server build",
+    "build:widget": "pnpm --filter widget build",
+    "typecheck": "pnpm --filter \"./*\" typecheck"
+  },
+  "engines": { "node": ">=20" },
+  "packageManager": "pnpm@10.32.1"
+}
