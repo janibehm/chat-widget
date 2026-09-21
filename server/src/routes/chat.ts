@@ -66,16 +66,18 @@ chatRoute.post('/chat', async (c) => {
       // vastauksessa tai käyttäjän viestissä) -> notifyN8n('lead.captured', ...)
       void full;
     } catch (err) {
-      // Tuntematon botti on konfiguraatiovirhe, ei palvelinvirhe - erotellaan
-      // se lokissa, jotta oikeat häiriöt eivät huku väärin asennettuihin
-      // script-tageihin.
-      const message = err instanceof Error ? err.message : 'Tuntematon virhe';
+      // Tekninen syy jää lokiin, käyttäjälle menee neutraali viesti. Widget
+      // on vieraan sivuston kävijöiden nähtävillä, joten palvelimen sisäisiä
+      // viestejä (mallin nimi, avainpuutteet, botId) ei näytetä ulos.
+      const tekninen = err instanceof Error ? err.message : 'Tuntematon virhe';
       if (err instanceof UnknownBotError) {
-        console.warn('[chat]', message);
+        // Konfiguraatiovirhe, ei häiriö - yleensä väärin asennettu script-tagi.
+        console.warn('[chat]', tekninen);
       } else {
-        console.error('[chat] striimaus epäonnistui:', message);
+        console.error('[chat] striimaus epäonnistui:', tekninen);
       }
-      await stream.writeSSE({ data: JSON.stringify({ type: 'error', message }) });
+      const kayttajalle = 'Pahoittelut, chat ei juuri nyt vastaa. Yritä hetken kuluttua uudelleen.';
+      await stream.writeSSE({ data: JSON.stringify({ type: 'error', message: kayttajalle }) });
     }
   });
 });
