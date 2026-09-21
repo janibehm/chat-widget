@@ -12,7 +12,8 @@ export type N8nEvent =
   | 'conversation.started'
   | 'conversation.ended'
   | 'lead.captured'
-  | 'message.flagged';
+  | 'message.flagged'
+  | 'sync.rejected';
 
 export interface N8nPayload {
   botId: string;

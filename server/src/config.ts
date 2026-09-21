@@ -13,6 +13,7 @@ const schema = z.object({
   ALLOWED_ORIGINS: z.string().default('*'),
   N8N_WEBHOOK_URL: z.string().url().optional().or(z.literal('')),
   N8N_WEBHOOK_SECRET: z.string().optional(),
+  ADMIN_SYNC_SECRET: z.string().optional(),
 });
 
 const parsed = schema.safeParse(process.env);
@@ -39,6 +40,9 @@ export const config = {
 
   n8nWebhookUrl: env.N8N_WEBHOOK_URL || undefined,
   n8nWebhookSecret: env.N8N_WEBHOOK_SECRET,
+
+  /** Jaettu salaisuus POST /admin/sync -kutsulle. Tyhja = endpoint pois kaytosta. */
+  adminSyncSecret: env.ADMIN_SYNC_SECRET,
 };
 
 export type Config = typeof config;

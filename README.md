@@ -193,3 +193,38 @@ data: {"type":"error","message":"..."}
 Tämä on valittu AI SDK:n oman stream-protokollan sijaan tarkoituksella:
 widget pärjää pelkällä `fetch`illä eikä tarvitse client-kirjastoa, mikä pitää
 bundlen pienenä.
+
+## Aineiston synkronointi Google Sheetsista (n8n)
+
+`POST /admin/sync` ottaa vastaan bottikohtaisen aineiston ja kirjoittaa
+`data/<botId>.json`. Tunnistautuminen `X-Sync-Secret`-otsakkeella, arvo
+`ADMIN_SYNC_SECRET`. Jos muuttujaa ei ole asetettu, endpoint on pois käytöstä.
+
+Endpoint on tarkoituksella **validoiva portti**, ei pelkkä kirjoitus:
+
+| Tilanne | Vastaus |
+|---|---|
+| Väärä tai puuttuva salaisuus | 401 |
+| Tyhjä aineisto tai tyhjä kysymys/vastaus rivillä | 400 |
+| Rivimäärä putoaa yli 50 % | 409, vanha aineisto jää voimaan |
+| Kunnossa | 200, atominen kirjoitus |
+
+Romahdussuoja estää tilanteen jossa taulukko tyhjenee vahingossa ja botti
+menettää koko tietämyksensä. Tarkoituksellinen pudotus menee läpi kentällä
+`"force": true`.
+
+n8n-workflow `Cusco UKK -synkronointi` hoitaa haun:
+
+```
+Ajastus 15 min ─┐
+                ├→ Lue UKK-taulukko → Muunna aineistoksi → Lähetä palvelimelle
+Aja käsin ──────┘
+```
+
+Botin nimi, kuvaus ja fallback-viesti asetetaan **Muunna aineistoksi**
+-noden alussa (`BOT`-objekti) - taulukossa on vain UKK-rivit.
+
+Kun n8n pyörii Dockerissa ja palvelin hostilla, osoite on
+`http://host.docker.internal:8787/admin/sync` - `localhost` osoittaisi
+konttiin itseensä.
+
