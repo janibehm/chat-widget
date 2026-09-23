@@ -5,6 +5,7 @@ import { config } from './config.js';
 import { describeModel } from './llm/client.js';
 import { chatRoute } from './routes/chat.js';
 import { adminRoute } from './routes/admin.js';
+import { leadRoute } from './routes/lead.js';
 import { listBots } from './llm/faq.js';
 
 const app = new Hono();
@@ -21,7 +22,7 @@ app.use(
       if (config.allowedOrigins === '*') return origin ?? '*';
       return config.allowedOrigins.includes(origin) ? origin : null;
     },
-    allowMethods: ['POST', 'OPTIONS'],
+    allowMethods: ['GET', 'POST', 'OPTIONS'],
     allowHeaders: ['Content-Type'],
     maxAge: 86400,
   }),
@@ -31,6 +32,7 @@ app.get('/health', (c) => c.json({ ok: true, model: describeModel(), bots: listB
 
 app.route('/', chatRoute);
 app.route('/', adminRoute);
+app.route('/', leadRoute);
 
 serve({ fetch: app.fetch, port: config.port }, (info) => {
   console.log(`chat-widget server: http://localhost:${info.port}`);

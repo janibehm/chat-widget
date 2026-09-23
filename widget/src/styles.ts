@@ -81,6 +81,46 @@ export function styles(cfg: WidgetConfig): string {
   }
   .composer button:disabled { opacity: .45; cursor: default; }
 
+  .tervetuloa { color: #6B7280; font-size: 13px; padding: 4px 2px; }
+
+  /* Pikavalinnat - kategoriat tulevat UKK-aineistosta */
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 12px 0; background: #fff; }
+  .chip {
+    border: 1px solid ${cfg.color}; background: #fff; color: ${cfg.color};
+    border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 13px; cursor: pointer;
+  }
+  .chip:hover { background: ${cfg.color}; color: #fff; }
+
+  .lead-open {
+    border: none; border-top: 1px solid #E5E7EB; background: #fff; color: ${cfg.color};
+    padding: 10px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; width: 100%;
+  }
+  .lead-open:hover { background: #F9FAFB; }
+
+  /* Yhteydenottolomake */
+  .lead { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #fff; }
+  .lead-intro { color: #6B7280; font-size: 13px; }
+  .lead label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600; color: #374151; }
+  .lead input, .lead textarea {
+    border: 1px solid #D1D5DB; border-radius: 9px; padding: 9px 11px;
+    font: inherit; font-weight: 400; color: #111827; outline: none; resize: vertical;
+  }
+  .lead input:focus, .lead textarea:focus { border-color: ${cfg.color}; }
+  .lead-error { background: #FEF2F2; color: #991B1B; border: 1px solid #FECACA; border-radius: 8px; padding: 8px 10px; font-size: 13px; }
+  .lead-actions { display: flex; gap: 8px; justify-content: flex-end; }
+  .lead-actions button {
+    border: none; border-radius: 9px; padding: 9px 16px; font: inherit; font-weight: 600; cursor: pointer;
+    background: ${cfg.color}; color: #fff;
+  }
+  .lead-actions button:disabled { opacity: .45; cursor: default; }
+  .lead-cancel { background: #F3F4F6 !important; color: #374151 !important; }
+  .lead-done { text-align: center; padding: 24px 8px; display: flex; flex-direction: column; gap: 10px; }
+  .lead-done p { color: #6B7280; font-size: 14px; }
+  .lead-back {
+    border: none; border-radius: 9px; background: ${cfg.color}; color: #fff;
+    padding: 9px 16px; font: inherit; font-weight: 600; cursor: pointer; align-self: center;
+  }
+
   /* Mobiilissa paneeli vie käytännössä koko ruudun. */
   @media (max-width: 480px) {
     .root { bottom: 16px; ${side}: 16px; }

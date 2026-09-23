@@ -228,3 +228,30 @@ Kun n8n pyörii Dockerissa ja palvelin hostilla, osoite on
 `http://host.docker.internal:8787/admin/sync` - `localhost` osoittaisi
 konttiin itseensä.
 
+## Liidien keruu
+
+Widgetissä on **Jätä yhteydenottopyyntö** -painike, joka avaa lomakkeen:
+nimi, sähköposti ja kysymys. Viimeisin chatissa kysytty kysymys esitäytetään.
+
+`POST /lead` validoi kentät ja tekee kaksi asiaa **tässä järjestyksessä**:
+
+1. Kirjoittaa liidin tiedostoon `data/leads/<botId>.jsonl`
+2. Lähettää `lead.captured`-tapahtuman n8n:lle
+
+Levylle kirjoitetaan ensin tarkoituksella: liidi on arvokkain data mitä tämä
+palvelu käsittelee, eikä sitä saa menettää siksi että n8n sattuu olemaan
+alhaalla. Jos n8n-kutsu epäonnistuu, liidi on silti tallessa.
+
+Lomake on erillinen eikä liidiä kysytä chatin kautta, jotta nimi ja
+sähköposti saadaan rakenteisena datana eikä mallin tulkinnan varassa.
+
+## Pikakysymykset
+
+`GET /bot/<botId>/meta` palauttaa enintään neljä kategoriaa UKK-aineistosta,
+yksi kysymys kutakin kategoriaa kohden. Widget näyttää ne painikkeina kun
+keskustelu on tyhjä.
+
+Ne tulevat siis **suoraan Sheets-taulukon `kategoria`-sarakkeesta** - asiakas
+hallitsee pikavalintoja itse taulukosta eikä widgetin koodia tarvitse koskea.
+Kategorioiden järjestys määräytyy rivien järjestyksestä.
+
