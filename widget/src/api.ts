@@ -102,6 +102,9 @@ export async function sendLead(opts: {
         sessionId: opts.sessionId,
         ...opts.lead,
         keskustelu: opts.keskustelu,
+        // Milta sivulta yhteydenotto tuli - myynnille tama kertoo kiinnostuksen
+        // kohteen. location.href on isantasivun osoite, ei widgetin.
+        sivu: location.href,
       }),
     });
     const data = (await res.json().catch(() => ({}))) as { error?: string };

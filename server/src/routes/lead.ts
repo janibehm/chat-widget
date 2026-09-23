@@ -13,6 +13,8 @@ const leadSchema = z.object({
   nimi: z.string().trim().min(1, 'Nimi puuttuu').max(120),
   sahkoposti: z.email('Tarkista sähköpostiosoite'),
   kysymys: z.string().trim().min(1, 'Kysymys puuttuu').max(2000),
+  /** Isantasivun osoite, jolta yhteydenotto tuli */
+  sivu: z.string().max(2000).optional(),
   /** Keskusteluhistoria liidin kontekstiksi - vapaaehtoinen */
   keskustelu: z.array(z.object({ role: z.enum(['user', 'assistant']), content: z.string() })).optional(),
 });
@@ -62,7 +64,7 @@ leadRoute.post('/lead', async (c) => {
     return c.json({ error: virheet[0] ?? 'Virheellinen lomake', virheet }, 400);
   }
 
-  const { botId, sessionId, nimi, sahkoposti, kysymys, keskustelu } = parsed.data;
+  const { botId, sessionId, nimi, sahkoposti, kysymys, keskustelu, sivu } = parsed.data;
 
   try {
     loadBot(botId);
@@ -77,6 +79,7 @@ leadRoute.post('/lead', async (c) => {
     nimi,
     sahkoposti,
     kysymys,
+    sivu: sivu ?? '',
     viesteja: keskustelu?.length ?? 0,
   };
 
